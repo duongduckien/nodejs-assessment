@@ -1,0 +1,32 @@
+{
+    "errorCode": {
+        "required": "101",
+        "numeric": "102",
+        "between": "103",
+        "array": "104",
+        "exists": "105",
+        "date_format": "106",
+        "email": "107",
+        "integer": "108",
+        "string": "109",
+        "url": "110",
+        "max_file": "111",
+        "mimes": "112",
+        "alpha_num": "113",
+        "unique": "114",
+        "confirmed": "115",
+        "min_numeric": "116",
+        "min_string": "117",
+        "match_email": "118",
+        "type_file": "119"
+    },
+    "statusResponse": {
+        "success": "success",
+        "error": "error"
+    },
+    "logsPath": "./logs/",
+    "typeLogs": {
+        "error": "error",
+        "access": "access"
+    }
+}
