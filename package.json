@@ -4,7 +4,7 @@
     "description": "",
     "main": "app.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "cross-env NODE_ENV=development mocha ./unit-test/*.test.js"
     },
     "author": "jreviews",
     "license": "ISC",
@@ -38,6 +38,12 @@
     },
     "devDependencies": {
         "chai": "^4.1.2",
-        "cross-env": "^5.2.0"
+        "chai-as-promised": "^7.1.1",
+        "chai-http": "^4.0.0",
+        "cross-env": "^5.2.0",
+        "rewire": "^4.0.1",
+        "sinon": "^6.1.5",
+        "sinon-chai": "^3.2.0",
+        "supertest": "^3.1.0"
     }
 }
