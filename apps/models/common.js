@@ -110,10 +110,32 @@ const update = (tableName, fieldName, value, data) => {
 
 }
 
+/**
+ * Delete records where value
+ */
+const remove = (tableName, fieldName, value) => {
+
+    return new Promise((resolve, reject) => {
+
+        if (tableName && fieldName && value) {
+            let query = connectDB.query(`DELETE FROM ${tableName} WHERE ${fieldName} = ?`, [value], function (err, result) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result);
+                }
+            });
+        }
+
+    });
+
+}
+
 module.exports = {
     exist: exist,
     create: create,
     getId: getId,
     update: update,
-    get: get
+    get: get,
+    remove: remove
 }

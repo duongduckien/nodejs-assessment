@@ -14,6 +14,11 @@ app.use(controllers);
 var host = env.get('server.host');
 var port = env.get('server.port');
 
-app.listen(process.env.PORT || port, host, () => {
-    console.log('Server running in port', port);
-});
+if (!module.parent){ 
+    app.listen(process.env.PORT || port, host, () => {
+        console.log('Server running in port', port);
+    });
+}
+
+// Unit test
+module.exports = app;
