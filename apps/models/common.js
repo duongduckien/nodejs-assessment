@@ -131,11 +131,33 @@ const remove = (tableName, fieldName, value) => {
 
 }
 
+/**
+ * Delete lastest record by id
+ */
+const removeLastRows = (tableName, limitNumber) => {
+
+    return new Promise((resolve, reject) => {
+
+        if (tableName) {
+            let query = connectDB.query(`DELETE FROM ${tableName} ORDER BY id DESC LIMIT ${limitNumber}`, function (err, result) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result);
+                }
+            });
+        }
+
+    });
+
+}
+
 module.exports = {
     exist: exist,
     create: create,
     getId: getId,
     update: update,
     get: get,
-    remove: remove
+    remove: remove,
+    removeLastRows: removeLastRows
 }

@@ -4,7 +4,7 @@
     "description": "",
     "main": "app.js",
     "scripts": {
-        "test": "cross-env NODE_ENV=development mocha ./unit-test/*.test.js"
+        "test": "cross-env NODE_ENV=development mocha ./unit-test/*.spec.js"
     },
     "author": "jreviews",
     "license": "ISC",

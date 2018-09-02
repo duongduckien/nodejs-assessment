@@ -51,7 +51,7 @@ describe('Teachers', () => {
 
     context('POST /api/teachers', () => {
 
-        it('should validate name', (done) => {
+        it('should validate name exist', (done) => {
             request(app).post('/api/teachers')
                 .send({
                     email: 'teacher-test-1@gmail.com'
@@ -64,7 +64,7 @@ describe('Teachers', () => {
                 });
         });
 
-        it('should validate email', (done) => {
+        it('should validate email exist', (done) => {
             request(app).post('/api/teachers')
                 .send({
                     name: 'Teacher Test 1'
@@ -77,7 +77,7 @@ describe('Teachers', () => {
                 });
         });
 
-        it('should validate exist email', (done) => {
+        it('should validate email unique', (done) => {
             request(app).post('/api/teachers')
                 .send({
                     name: 'Teacher Test 2',

@@ -45,7 +45,7 @@ router.get('/', async (req, res) => {
         let emailsOfStudents = commonHelper.getArrData(dataStudents, 'email');
 
         return res.status(status.OK).json({
-            student: emailsOfStudents
+            students: emailsOfStudents
         });
 
     } catch (e) {
