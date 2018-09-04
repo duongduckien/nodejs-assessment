@@ -26,3 +26,7 @@ From root folder of project. Run
 ### Run project
 
 Run `node index`
+
+### Testing
+
+Run `npm run test`
