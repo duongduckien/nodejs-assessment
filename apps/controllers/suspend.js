@@ -37,7 +37,25 @@ router.post('/', middleware.suspend, async (req, res) => {
 
     } catch (e) {
 
-        writeLogs.createFile(e, config.get('typeLogs.error'));
+        if (e.type && e.type === 'SQL') {
+
+            writeLogs.createFile(e.error, config.get('typeLogs.error'));
+
+            return res.status(status.INTERNAL_SERVER_ERROR).json({
+                status: config.get('statusResponse.error'),
+                message: 'SQL Query have problems!'
+            });
+
+        } else if (e.type && e.type === 'APP') {
+
+            writeLogs.createFile(e.error, config.get('typeLogs.error'));
+
+            return res.status(status.BAD_REQUEST).json({
+                status: config.get('statusResponse.error'),
+                message: e.error
+            });
+
+        }
 
         return res.status(status.BAD_REQUEST).json({
             status: config.get('statusResponse.error'),

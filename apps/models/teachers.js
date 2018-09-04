@@ -10,7 +10,7 @@ const getTeachersByEmail = (arrEmail) => {
     return new Promise((resolve, reject) => {
 
         if (arrEmail) {
-            let query = connectDB.query(`SELECT * FROM teacher WHERE email IN ('${arrEmail.join("','")}')`, (err, result) => {
+            let query = connectDB.query(`SELECT * FROM teachers WHERE email IN ('${arrEmail.join("','")}')`, (err, result) => {
                 if (err) {
                     reject(commonHelper.errorSQL(err));
                 } else {

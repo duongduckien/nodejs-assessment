@@ -63,11 +63,19 @@ const errorSQL = (err) => {
     if (err) return {type: 'SQL', error: err};
 }
 
+/**
+ * Return error of application
+ */
+const errorApp = (err) => {
+    if (err) return {type: 'APP', error: err};
+}
+
 module.exports = {
     getArrData: getArrData,
     uniqueArrData: uniqueArrData,
     duplicateArrData: duplicateArrData,
     splitString: splitString,
     getEmailInArray: getEmailInArray,
-    errorSQL: errorSQL
+    errorSQL: errorSQL,
+    errorApp: errorApp
 }
