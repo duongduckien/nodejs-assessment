@@ -56,10 +56,18 @@ const getEmailInArray = (arrStr) => {
     return arrEmail;
 }
 
+/**
+ * Return error from SQL query
+ */
+const errorSQL = (err) => {
+    if (err) return {type: 'SQL', error: err};
+}
+
 module.exports = {
     getArrData: getArrData,
     uniqueArrData: uniqueArrData,
     duplicateArrData: duplicateArrData,
     splitString: splitString,
-    getEmailInArray: getEmailInArray
+    getEmailInArray: getEmailInArray,
+    errorSQL: errorSQL
 }

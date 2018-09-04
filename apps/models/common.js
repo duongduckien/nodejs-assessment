@@ -1,5 +1,6 @@
 var db = require('../common/database');
 var connectDB = db.getConnectDB();
+var commonHelper = require('../helpers/common');
 
 /**
  * Check field is exist
@@ -9,9 +10,9 @@ const exist = (tableName, fieldName, value) => {
     return new Promise((resolve, reject) => {
 
         if (tableName && fieldName) {
-            let query = connectDB.query(`SELECT * FROM ${tableName} WHERE ${fieldName} = ?`, value, function (err, result) {
+            let query = connectDB.query(`SELECT * FROM ${tableName} WHERE ${fieldName} = ?`, value, (err, result) => {
                 if (err) {
-                    reject(err);
+                    reject(commonHelper.errorSQL(err));
                 } else {
                     if (result.length == 0) {
                         resolve(false);
@@ -34,9 +35,9 @@ const create = (tableName, data) => {
     return new Promise((resolve, reject) => {
 
         if (tableName && data) {
-            let query = connectDB.query(`INSERT INTO ${tableName} SET ?`, data, function (err, result) {
+            let query = connectDB.query(`INSERT INTO ${tableName} SET ?`, data, (err, result) => {
                 if (err) {
-                    reject(err);
+                    reject(commonHelper.errorSQL(err));
                 } else {
                     resolve(result);
                 }
@@ -55,9 +56,9 @@ const getId = (tableName, fieldName, value) => {
     return new Promise((resolve, reject) => {
 
         if (tableName && fieldName && value) {
-            let query = connectDB.query(`SELECT id FROM ${tableName} WHERE ${fieldName} = ?`, value, function (err, result) {
+            let query = connectDB.query(`SELECT id FROM ${tableName} WHERE ${fieldName} = ?`, value, (err, result) => {
                 if (err) {
-                    reject(err);
+                    reject(commonHelper.errorSQL(err));
                 } else {
                     resolve(result[0].id);
                 }
@@ -76,9 +77,9 @@ const get = (tableName, fieldName, value) => {
     return new Promise((resolve, reject) => {
 
         if (tableName && fieldName && value) {
-            let query = connectDB.query(`SELECT * FROM ${tableName} WHERE ${fieldName} = ?`, value, function (err, result) {
+            let query = connectDB.query(`SELECT * FROM ${tableName} WHERE ${fieldName} = ?`, value, (err, result) => {
                 if (err) {
-                    reject(err);
+                    reject(commonHelper.errorSQL(err));
                 } else {
                     resolve(result);
                 }
@@ -97,9 +98,9 @@ const update = (tableName, fieldName, value, data) => {
     return new Promise((resolve, reject) => {
 
         if (tableName && fieldName && value && data) {
-            let query = connectDB.query(`UPDATE ${tableName} SET ? WHERE ${fieldName} = ?`, [data, value], function (err, result) {
+            let query = connectDB.query(`UPDATE ${tableName} SET ? WHERE ${fieldName} = ?`, [data, value], (err, result) => {
                 if (err) {
-                    reject(err);
+                    reject(commonHelper.errorSQL(err));
                 } else {
                     resolve(result);
                 }
@@ -118,9 +119,9 @@ const remove = (tableName, fieldName, value) => {
     return new Promise((resolve, reject) => {
 
         if (tableName && fieldName && value) {
-            let query = connectDB.query(`DELETE FROM ${tableName} WHERE ${fieldName} = ?`, [value], function (err, result) {
+            let query = connectDB.query(`DELETE FROM ${tableName} WHERE ${fieldName} = ?`, [value], (err, result) => {
                 if (err) {
-                    reject(err);
+                    reject(commonHelper.errorSQL(err));
                 } else {
                     resolve(result);
                 }
@@ -139,9 +140,9 @@ const removeLastRows = (tableName, limitNumber) => {
     return new Promise((resolve, reject) => {
 
         if (tableName) {
-            let query = connectDB.query(`DELETE FROM ${tableName} ORDER BY id DESC LIMIT ${limitNumber}`, function (err, result) {
+            let query = connectDB.query(`DELETE FROM ${tableName} ORDER BY id DESC LIMIT ${limitNumber}`, (err, result) => {
                 if (err) {
-                    reject(err);
+                    reject(commonHelper.errorSQL(err));
                 } else {
                     resolve(result);
                 }
