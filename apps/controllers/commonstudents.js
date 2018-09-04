@@ -15,11 +15,12 @@ var status = require('../common/statusCode');
 // Helper
 var writeLogs = require('../helpers/writeLogs');
 var commonHelper = require('../helpers/common');
+var middleware = require('../helpers/middleware');
 
 /**
  * Get common student
  */
-router.get('/', async (req, res) => {
+router.get('/', middleware.commonstudents, async (req, res) => {
 
     try {
 

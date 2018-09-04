@@ -1,6 +1,4 @@
-var validUrl = require('valid-url');
 var config = require('config');
-var isemail = require('isemail');
 var commonModel = require('../models/common');
 
 /**

@@ -15,11 +15,12 @@ var status = require('../common/statusCode');
 // Helper
 var writeLogs = require('../helpers/writeLogs');
 var commonHelper = require('../helpers/common');
+var middleware = require('../helpers/middleware');
 
 /**
  * Register student for teacher
  */
-router.post('/', async (req, res) => {
+router.post('/', middleware.register, async (req, res) => {
 
     try {
 

@@ -12,11 +12,12 @@ var status = require('../common/statusCode');
 
 // Helper
 var writeLogs = require('../helpers/writeLogs');
+var middleware = require('../helpers/middleware');
 
 /**
  * Suspend student
  */
-router.post('/', async (req, res) => {
+router.post('/', middleware.suspend, async (req, res) => {
 
     try {
 

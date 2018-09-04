@@ -14,11 +14,12 @@ var status = require('../common/statusCode');
 // Helper
 var writeLogs = require('../helpers/writeLogs');
 var commonHelper = require('../helpers/common');
+var middleware = require('../helpers/middleware');
 
 /**
  * Create notifications to students from teachers
  */
-router.post('/', async (req, res) => {
+router.post('/', middleware.retriveForNotifications, async (req, res) => {
 
     try {
 
